@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var message = ""
+    @State private var messages = [" ", "Fabulous, That's You!", "You are Amazing!"]
     @State private var imageName = ""
     @State private var imageNumber = 0
     
@@ -22,24 +22,24 @@ struct ContentView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 30))
                 .shadow(radius: 30)
             
-            Text(message)
+            Text(messages[0])
                 .font(.largeTitle)
                 .fontWeight(.heavy)
                 .foregroundStyle(.red)
             
             Spacer()
             
-            Button("Show Message") {
-                let message1 = "You are Awesome!"
-                let message2 = "You are Great!"
+            Button("Show message") {
                 
-                message = ( message == message1 ? message2 : message1 )
-                imageName = "image" + String(imageNumber)
+               
+             imageName = "image" + String(imageNumber)
                 
-                imageNumber += 1
+            imageNumber += 1
+                print(messages)
                 
                 if imageNumber > 9 {
                     imageNumber = 0
+                    messages[0]
                     
                 }
             }
