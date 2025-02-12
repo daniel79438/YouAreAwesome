@@ -45,14 +45,14 @@ struct ContentView: View {
                                 "When the Genius Bar Needs Help, They Call You!"]
                 
                 
-                message = messages[messageNumber]
+                message = messages[Int.random(in: 0..<messages.count-1)]
                 messageNumber += 1
                 if messageNumber == messages.count {
                     messageNumber = 0
                 }
                 
                 
-                imageName = "image\(imageNumber)"
+                imageName = "image\(Int.random(in: 1...9))"
                 
                 
                 imageNumber += 1
