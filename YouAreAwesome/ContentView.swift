@@ -52,10 +52,9 @@ struct ContentView: View {
                     .labelsHidden()
                     .onChange(of: soundIsOn){
                         if audioPlayer != nil && audioPlayer.isPlaying {
-                                audioPlayer.stop()
+                            audioPlayer.stop()
                         }
                     }
-                
                 Spacer()
                 
                 Button("Show message") {
@@ -76,13 +75,14 @@ struct ContentView: View {
                     lastSoundNumber = nonRepeatingRandom(lastNumber: lastSoundNumber, upperBound: numberOfSounds-1)
                     if soundIsOn {
                         playSound(soundName: "sound\(lastSoundNumber)")
-
+                        
                     }
                 }
                 .buttonStyle(.borderedProminent)
                 .font(.title2)
                 .foregroundStyle(.white)
             }
+            .tint(.accentColor)
             
         }
         .padding()
@@ -93,12 +93,12 @@ struct ContentView: View {
         repeat {
             newNumber = Int.random(in: 0...upperBound)
         } while newNumber == lastNumber
-            return newNumber
+        return newNumber
     }
     
     func playSound(soundName: String) {
         if audioPlayer != nil && audioPlayer.isPlaying {
-                audioPlayer.stop()
+            audioPlayer.stop()
         }
         guard let soundFile = NSDataAsset(name: soundName) else {
             print("😡 Could not read file name \(soundName)")
@@ -114,7 +114,12 @@ struct ContentView: View {
     
 }
 
-#Preview {
+#Preview("Light Mode") {
     ContentView()
+        .preferredColorScheme(.light)
+}
+#Preview("Dark Mode") {
+    ContentView()
+        .preferredColorScheme(.dark)
 }
 
